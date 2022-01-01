@@ -8,7 +8,7 @@ public class RaceCondition {
         var downloadStatus = new DownloadStatus();
         List<Thread> threads = new ArrayList<>();
 
-        for (var i = 0; i < 51; i++) {
+        for (var i = 0; i < 5; i++) {
             var thread = new Thread(new DownloadTask(downloadStatus, i));
             thread.start();
             threads.add(thread);
@@ -18,6 +18,7 @@ public class RaceCondition {
             thread.join();
         }
 
-//        System.out.println(downloadStatus.getBytes());
+        System.out.println(downloadStatus.getBytes());
+        System.out.println(downloadStatus.getTotalDownload());
     }
 }

@@ -8,7 +8,6 @@ public class DownloadTask implements Runnable {
     public DownloadTask(DownloadStatus status, Integer order) {
         this.status = status;
         this.order = order;
-        this.run();
     }
 
     @Override
@@ -21,9 +20,10 @@ public class DownloadTask implements Runnable {
 //            e.printStackTrace();
 //        }
 
-        for (var i = 0; i < 10_0000; i++) {
+        for (var i = 0; i < 100; i++) {
             if (Thread.currentThread().isInterrupted()) return;
             this.status.increaseBytes();
+            this.status.increaseTotalDownload();
 //            System.out.println("Downloading " + i + " bytes");
         }
 
